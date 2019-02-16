@@ -11,15 +11,22 @@
   - net-tools
   - ntp
 
+- name: "Start and Enable NTPD"
+  systemd:
+    name: ntpd
+    state: started
+    enabled: yes
+
+
 - debug:
     var: inventory_dir
 
-#- name: "Copy RHEL 7 SIO Files"
-#  copy:
-#    src: ./sio_packages/
-#    dest: /tmp/
-#    owner: root
-#    group: root
-#    mode: 0644
+- name: "Copy RHEL 7 SIO Files"
+  copy:
+    src: ./sio_packages/
+    dest: /tmp/
+    owner: root
+    group: root
+    mode: 0644
 
 
