@@ -1,6 +1,5 @@
 - name: "Installing Basic Tools"
   package: pkg={{ item }} state=installed
-  state: present
   with_items:
   - git
   - vim
@@ -12,26 +11,15 @@
   - net-tools
   - ntp
 
-- name: "Find out Playbooks path"
-  shell: pwd
-  register: playbook_path
-  
-  
-- name: "Copy RHEL 7 SIO Files"
-  copy:
-    src: "{{ playbook_path.stdout }}"/sio_packages
-    dest: /tmp/
-    owner: root
-    group: root
-    mode: 0644
+- debug:
+    var: inventory_dir
 
-- name: "Install SIO SDS"
-  yum:
-    name: /tmp/sio_packages/EMC-ScaleIO-sds-2.6-10000.123.el7.x86_64.rpm
-    state: present
+#- name: "Copy RHEL 7 SIO Files"
+#  copy:
+#    src: ./sio_packages/
+#    dest: /tmp/
+#    owner: root
+#    group: root
+#    mode: 0644
 
-- name: "Install SIO LIA"
-  yum:
-    name: /tmp/sio_packages/EMC-ScaleIO-lia-2.6-10000.123.el7.x86_64.rpm
-    state: present
 
