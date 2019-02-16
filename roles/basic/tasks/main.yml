@@ -1,0 +1,39 @@
+- name: "Installing Basic Tools"
+  package: pkg={{ item }} state=installed
+  state: present
+  with_items:
+  - git
+  - vim
+  - libaio
+  - numactl
+  - sysfsutils
+  - unzip
+  - wget
+  - net-tools
+  - ntp
+
+- name: "Copy RHEL 7 SIO Files"
+  copy:
+    src: /root/MDM1and2Install/SIO_Packages 
+    dest: /tmp/
+    owner: root
+    group: root
+    mode: 0644
+
+
+- name: "Install SIO SDS"
+  yum:
+    name: /tmp/SIO_Packages/EMC-ScaleIO-sds-2.6-10000.123.el7.x86_64.rpm
+    state: present
+
+
+- name: "Install SIO LIA"
+  yum:
+    name: /tmp/SIO_Packages/EMC-ScaleIO-lia-2.6-10000.123.el7.x86_64.rpm
+    state: present
+
+- name: "Install SIO MDM 1"
+  shell: MDM_ROLE_IS_MANAGER=1 rpm -i EMC-ScaleIO-mdm-2.6-10000.123.el7.x86_64.rpm
+  args:
+    chdir: /tmp/SIO_Packages/
+
