@@ -4,6 +4,11 @@
   roles:
   - all 
 
+- hosts: gateway 
+  become: true
+  roles:
+  - gateway 
+
 - hosts: master 
   become: true
   roles:

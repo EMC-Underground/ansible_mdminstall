@@ -1,0 +1,32 @@
+- name: "Install Java 8"
+  yum: name=/tmp/sio_packages/jdk-8u131-linux-x64.rpm
+
+- name: "Install SIO Gateway"
+  shell: "GATEWAY_ADMIN_PASSWORD=Password#1 rpm -U /tmp/sio_packages/EMC-ScaleIO-gateway-2.6-10000.123.x86_64.rpm --nodeps"
+  args:
+    chdir: /tmp/sio_packages/
+  ignore_errors: yes
+
+- name: "Add IP address in the gatewayUser.properties file"  
+  lineinfile:
+    path: /opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties
+    regexp: '^mdm.ip.addresses'
+    insertafter: '= '
+    line: 'mdm.ip.addresses=10.237.198.171'
+
+- name: "Gateway will trust the MDM certificate automatically"  
+  lineinfile:
+    path: /opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties
+    regexp: '^gateway-security.allow_non_secure_communication'
+    insertafter: '= '
+    line: 'gateway-security.allow_non_secure_communication=true'
+
+- name: "Gateway will trust the MDM certificate automatically"  
+  lineinfile:
+    path: /opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties
+    regexp: '^security.bypass_certificate_check'
+    insertafter: '= '
+    line: 'security.bypass_certificate_check=true'
+    
+- name: "Restart Gateway Service"
+  shell: systemctl restart scaleio-gateway.service
