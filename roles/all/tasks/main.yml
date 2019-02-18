@@ -9,17 +9,11 @@
   - unzip
   - wget
   - net-tools
-  - ntp
 
-- name: "Start and Enable NTPD"
-  systemd:
-    name: ntpd
-    state: started
-    enabled: yes
-
-
-- debug:
-    var: inventory_dir
+- name: set timezone to UTC  
+  timezone:
+    name: UTC 
+    hwclock: UTC
 
 - name: "Copy RHEL 7 SIO Files"
   copy:
