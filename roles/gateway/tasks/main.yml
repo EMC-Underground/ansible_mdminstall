@@ -1,35 +1,49 @@
 - name: "Download Java 8"
-  get_url: url=https://javadl.oracle.com/webapps/download/AutoDL?BundleId=236877_42970487e3af4f5aa5bca3f542482c60 dest=/tmp headers="Cookie:' gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie'" validate_certs=no owner=root group=root mode=744  
-  
+  get_url:
+    url: https://javadl.oracle.com/webapps/download/AutoDL?BundleId=236877_42970487e3af4f5aa5bca3f542482c60
+    dest: /tmp
+    headers: "Cookie:' gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie'"
+    validate_certs: no
+    owner: root
+    group: root
+    mode: 744
+
 - name: "Install Java 8"
-  yum: name=/tmp/jdk-8u131-linux-x64.rpm
+  yum:
+    name: /tmp/jdk-8u131-linux-x64.rpm
+    state: present
 
 - name: "Install SIO Gateway"
-  shell: "GATEWAY_ADMIN_PASSWORD=Password#1 rpm -U /tmp/sio_packages/EMC-ScaleIO-gateway-2.6-10000.123.x86_64.rpm --nodeps"
-  args:
-    chdir: /tmp/sio_packages/
-  ignore_errors: yes
+  yum:
+    name: /tmp/sio_packages/EMC-ScaleIO-gateway-2.6-10000.123.x86_64.rpm
+    state: present
+    environment:
+      GATEWAY_ADMIN_PASSWORD: Password#1
 
-- name: "Add IP address in the gatewayUser.properties file"  
+
+- name: "Add IP address in the gatewayUser.properties file"
   lineinfile:
     path: /opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties
     regexp: '^mdm.ip.addresses'
     insertafter: '= '
     line: 'mdm.ip.addresses=10.237.198.171'
 
-- name: "Gateway will trust the MDM certificate automatically"  
+- name: "Gateway will trust the MDM certificate automatically"
   lineinfile:
     path: /opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties
     regexp: '^gateway-security.allow_non_secure_communication'
     insertafter: '= '
     line: 'gateway-security.allow_non_secure_communication=true'
 
-- name: "Gateway will trust the MDM certificate automatically"  
+- name: "Gateway will trust the MDM certificate automatically"
   lineinfile:
     path: /opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties
     regexp: '^security.bypass_certificate_check'
     insertafter: '= '
     line: 'security.bypass_certificate_check=true'
-    
+
 - name: "Restart Gateway Service"
-  shell: systemctl restart scaleio-gateway.service
+  systemd:
+    name: scaleio-gateway
+    enabled: yes
+    state: restarted

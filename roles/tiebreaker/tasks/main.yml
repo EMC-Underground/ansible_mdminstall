@@ -10,7 +10,9 @@
 
 
 - name: "Install ScaleIO MDM set to TieBreaker"
-  shell: MDM_ROLE_IS_MANAGER=0 rpm -i EMC-ScaleIO-mdm-2.6-10000.123.el7.x86_64.rpm
-  args:
-    chdir: /tmp/SIO_Packages/
+  yum:
+    name: /tmp/sio_packages/EMC-ScaleIO-mdm-2.6-10000.123.el7.x86_64.rpm
+    state: present
+    environment:
+      MDM_ROLE_IS_MANAGER: 0
 

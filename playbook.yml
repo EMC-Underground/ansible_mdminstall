@@ -1,25 +1,25 @@
 ---
-- hosts: all 
+- hosts: all
   become: true
   roles:
-  - all 
+  - all
   - role: ericsysmin.chrony
     chrony_config_server:
-      - mickey.lss.emc.com 
-         
+      - mickey.lss.emc.com
 
-- hosts: gateway 
+
+- hosts: gateway
   become: true
   roles:
-  - gateway 
+  - gateway
 
-- hosts: master 
+- hosts: master
   become: true
   roles:
-  - master 
+  - master
 
-- hosts: tiebreaker 
+- hosts: tiebreaker
   become: true
   roles:
-  - tiebreaker 
+  - tiebreaker
 

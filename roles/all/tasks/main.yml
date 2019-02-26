@@ -1,5 +1,5 @@
 - name: "Installing Basic Tools"
-  package: pkg={{ item }} state=installed
+  package: pkg={{ item }} state=installed update_cache=yes
   with_items:
   - git
   - vim
@@ -10,9 +10,9 @@
   - wget
   - net-tools
 
-- name: set timezone to UTC  
+- name: set timezone to UTC
   timezone:
-    name: UTC 
+    name: UTC
     hwclock: UTC
 
 - name: "Copy RHEL 7 SIO Files"

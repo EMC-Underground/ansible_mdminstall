@@ -10,7 +10,9 @@
 
 
 - name: "Install MDM and set the host to Master"
-  shell: MDM_ROLE_IS_MANAGER=1 rpm -i EMC-ScaleIO-mdm-2.6-10000.123.el7.x86_64.rpm
-  args:
-    chdir: /tmp/SIO_Packages/
+  yum:
+    name: /tmp/SIO_Packages/EMC-ScaleIO-mdm-2.6-10000.123.el7.x86_64.rpm
+    state: present
+    environment:
+      MDM_ROLE_IS_MANAGER: 1
 
