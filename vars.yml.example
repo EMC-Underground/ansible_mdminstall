@@ -1,0 +1,19 @@
+---
+# in the above example, this would be vars/external_vars.yml
+ntp_server: <NTP_FQDN>
+vxflex_gateway_ip: <VXFLEX_IP>
+vxflex_gateway_username: <USERNAME>
+vxflex_gateway_pw: <PASSWORD>
+vxflex_version: "2.6-10000.123"
+vxflex_protection_domain_name: <VXFLEX_PD_NAME>
+vxflex_mdm_ip:
+- "10.10.10.1,10.10.11.1"
+- <mdm_ips_2>
+- <mdm_ips_3>
+- <mdm_ips_4>
+- <mdm_ips_5>
+vxflex_mdm_mgmt_ip:
+- "192.168.0.1"
+- <mdm_mgmt_ip_2>
+- <mdm_mgmt_ip_3>
+- <mdm_mgmt_ip_4>
