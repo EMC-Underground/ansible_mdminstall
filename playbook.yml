@@ -7,8 +7,9 @@
     chrony_config_server:
       - mickey.lss.emc.com
 
-
 - hosts: gateway
+  vars_files:
+    - roles/all/vars/vars.yml
   become: true
   roles:
   - gateway

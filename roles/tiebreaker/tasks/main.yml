@@ -1,18 +1,18 @@
 - name: "Install SIO SDS"
   yum:
-    name: /tmp/sio_packages/EMC-ScaleIO-sds-2.6-10000.123.el7.x86_64.rpm
+    name: '/tmp/sio_packages/EMC-ScaleIO-sds-{{ vxflex_version }}.x86_64.rpm'
     state: present
 
 - name: "Install SIO LIA"
   yum:
-    name: /tmp/sio_packages/EMC-ScaleIO-lia-2.6-10000.123.el7.x86_64.rpm
+    name: '/tmp/sio_packages/EMC-ScaleIO-lia-{{ vxflex_version }}.x86_64.rpm'
     state: present
 
 
 - name: "Install ScaleIO MDM set to TieBreaker"
   yum:
-    name: /tmp/sio_packages/EMC-ScaleIO-mdm-2.6-10000.123.el7.x86_64.rpm
+    name: '/tmp/sio_packages/EMC-ScaleIO-mdm-{{ vxflex_version }}.x86_64.rpm'
     state: present
-    environment:
-      MDM_ROLE_IS_MANAGER: 0
+  environment:
+    MDM_ROLE_IS_MANAGER: 0
 
