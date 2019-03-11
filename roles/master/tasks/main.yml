@@ -1,6 +1,6 @@
 - name: "Install SIO SDS"
   yum:
-    name: '/tmp/sio_packages/EMC-ScaleIO-sds-{{ vxflex_version }}x86_64.rpm'
+    name: '/tmp/sio_packages/EMC-ScaleIO-sds-{{ vxflex_version }}.x86_64.rpm'
     state: present
 
 - name: "Install SIO LIA"
