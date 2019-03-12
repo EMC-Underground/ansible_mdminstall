@@ -15,11 +15,15 @@
   - gateway
 
 - hosts: master
+  vars_files:
+    - roles/all/vars/vars.yml
   become: true
   roles:
   - master
 
 - hosts: tiebreaker
+  vars_files:
+    - roles/all/vars/vars.yml
   become: true
   roles:
   - tiebreaker

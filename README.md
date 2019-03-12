@@ -1,6 +1,7 @@
 ### Copy vars.yml to:
 roles/all/vars/vars.yml
 
+### Update Hosts file with Server IP addresses
 
 ### Run Playbook
 ```shell

@@ -27,7 +27,7 @@
     path: /opt/emc/scaleio/gateway/webapps/ROOT/WEB-INF/classes/gatewayUser.properties
     regexp: '^mdm.ip.addresses'
     insertafter: '= '
-    line: 'mdm.ip.addresses={{ vxflex_mdm_mgmt_ip }}'
+    line: 'mdm.ip.addresses={{ vxflex_master_mdm_mgmt_ip }}'
 
 - name: "Gateway will trust the MDM certificate automatically"
   lineinfile:
