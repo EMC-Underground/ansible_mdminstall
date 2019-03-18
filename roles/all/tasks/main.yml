@@ -1,3 +1,8 @@
+- name: Enable the EPEL Repo for PIP Install
+  yum:
+    name: epel-release
+    state: latest
+
 - name: "Installing Basic Tools"
   package: pkg={{ item }} state=installed update_cache=yes
   with_items:
@@ -9,6 +14,21 @@
   - unzip
   - wget
   - net-tools
+  - python-pip
+
+- name:
+  easy_install:
+    name: pip
+    state: latest
+
+- name: Upgrade OS
+  yum:
+    name: '*'
+    state: latest
+
+- name: "Install Python-pexpect"
+  pip:
+    name: pexpect
 
 - name: set timezone to UTC
   timezone:
