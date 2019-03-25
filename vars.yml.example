@@ -10,12 +10,19 @@ vxflex_protection_domain_name: <VXFLEX_PD_NAME>
 vxflex_master_mdm_name: "<MASTER_MDM_NAME>"
 vxflex_standby_mdm_name: "<STANDBY_MDM_NAME>"
 vxflex_tiebreaker_mdm_name: "<TIEBREAK_MDM_NAME>"
-vxflex_master_mdm_mgmt_ip: "<MASTER_MDM_MGMT_IP>"
-vxflex_standby_mdm_mgmt_ip: "<STANDBY_MDM_MGMT_IP>"
+vxflex_master_mdm_mgmt_ip:
+  - <MASTER_MDM_MGMT_IP>
+vxflex_standby_mdm_mgmt_ip:
+  - <STANDBY_MDM_MGMT_IP>
+vxflex_tiebreaker_mdm_mgmt_ip:
+  - <TIEBREAKER_MDM_MGMT_IP>
 vxflex_master_mdm_ip:
-- "<MASTER_MDM_IP_1>,<MASTER_MDM_IP_2>"
+  - <MASTER_MDM_IP_1>
+  - <MASTER_MDM_IP_2>
 vxflex_standby_mdm_ip:
-- "<STANDBY_MDM_IP_1>,<STANDBY_MDM_IP_2>"
+  - <STANDBY_MDM_IP_1>
+  - <STANDBY_MDM_IP_2>
 vxflex_tiebreaker_mdm_ip:
-- "<TIEBREAKER_MDM_IP_1>,<TIEBREAKER_MDM_IP_2>"
+  - <TIEBREAKER_MDM_IP_1>
+  - <TIEBREAKER_MDM_IP_2>
 

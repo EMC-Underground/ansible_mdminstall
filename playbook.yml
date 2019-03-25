@@ -1,30 +1,32 @@
 ---
 - hosts: all
   become: true
+  vars_files:
+    - ./vars.yml
   roles:
   - all
   - role: ericsysmin.chrony
     chrony_config_server:
-      - mickey.lss.emc.com
+      - "{{ ntp_server }}"
 
 - hosts: gateway
-  vars_files:
-    - roles/all/vars/vars.yml
   become: true
+  vars_files:
+    - ./vars.yml
   roles:
   - gateway
 
 - hosts: master
-  vars_files:
-    - roles/all/vars/vars.yml
   become: true
+  vars_files:
+    - ./vars.yml
   roles:
   - master
 
 - hosts: tiebreaker
-  vars_files:
-    - roles/all/vars/vars.yml
   become: true
+  vars_files:
+    - ./vars.yml
   roles:
   - tiebreaker
 
