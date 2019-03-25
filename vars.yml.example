@@ -5,15 +5,17 @@ vxflex_gateway_ip: <VXFLEX_IP>
 vxflex_gateway_username: <USERNAME>
 vxflex_gateway_pw: <PASSWORD>
 vxflex_version: "2.6-10000.123"
+vxflex_storage_pool_name: sp1
 vxflex_protection_domain_name: <VXFLEX_PD_NAME>
-vxflex_mdm_ip:
-- "10.10.10.1,10.10.11.1"
-- <mdm_ips_2>
-- <mdm_ips_3>
-- <mdm_ips_4>
-- <mdm_ips_5>
-vxflex_mdm_mgmt_ip:
-- "192.168.0.1"
-- <mdm_mgmt_ip_2>
-- <mdm_mgmt_ip_3>
-- <mdm_mgmt_ip_4>
+vxflex_master_mdm_name: "<MASTER_MDM_NAME>"
+vxflex_standby_mdm_name: "<STANDBY_MDM_NAME>"
+vxflex_tiebreaker_mdm_name: "<TIEBREAK_MDM_NAME>"
+vxflex_master_mdm_mgmt_ip: "<MASTER_MDM_MGMT_IP>"
+vxflex_standby_mdm_mgmt_ip: "<STANDBY_MDM_MGMT_IP>"
+vxflex_master_mdm_ip:
+- "<MASTER_MDM_IP_1>,<MASTER_MDM_IP_2>"
+vxflex_standby_mdm_ip:
+- "<STANDBY_MDM_IP_1>,<STANDBY_MDM_IP_2>"
+vxflex_tiebreaker_mdm_ip:
+- "<TIEBREAKER_MDM_IP_1>,<TIEBREAKER_MDM_IP_2>"
+
