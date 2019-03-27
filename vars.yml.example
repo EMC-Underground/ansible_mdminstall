@@ -5,11 +5,12 @@ vxflex_gateway_ip: <VXFLEX_IP>
 vxflex_gateway_username: <USERNAME>
 vxflex_gateway_pw: <PASSWORD>
 vxflex_version: "2.6-10000.123"
-vxflex_storage_pool_name: sp1
+vxflex_system_id: <id>
+vxflex_storage_pool_name: <STORAGE_POOL_NAME>
 vxflex_protection_domain_name: <VXFLEX_PD_NAME>
-vxflex_master_mdm_name: "<MASTER_MDM_NAME>"
-vxflex_standby_mdm_name: "<STANDBY_MDM_NAME>"
-vxflex_tiebreaker_mdm_name: "<TIEBREAK_MDM_NAME>"
+vxflex_master_mdm_name: <MASTER_MDM_NAME>
+vxflex_standby_mdm_name: <STANDBY_MDM_NAME>
+vxflex_tiebreaker_mdm_name: <TIEBREAK_MDM_NAME>
 vxflex_master_mdm_mgmt_ip:
   - <MASTER_MDM_MGMT_IP>
 vxflex_standby_mdm_mgmt_ip:
@@ -25,4 +26,4 @@ vxflex_standby_mdm_ip:
 vxflex_tiebreaker_mdm_ip:
   - <TIEBREAKER_MDM_IP_1>
   - <TIEBREAKER_MDM_IP_2>
-
+rexray_log_level: debug
