@@ -47,7 +47,7 @@
     insertafter: '= '
     line: "http.port={{ vxflex_gateway_http_port }}"
 
-- name: "Change gateway https port to 8080"
+- name: "Change gateway https port to 8443"
   lineinfile:
     path: /opt/emc/scaleio/gateway/conf/catalina.properties
     regexp: '^ssl.port'
