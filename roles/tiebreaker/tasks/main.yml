@@ -1,14 +1,3 @@
-- name: "Install SIO SDS"
-  yum:
-    name: '/tmp/EMC-ScaleIO-sds-{{ vxflex_version }}.el7.x86_64.rpm'
-    state: present
-
-- name: "Install SIO LIA"
-  yum:
-    name: '/tmp/EMC-ScaleIO-lia-{{ vxflex_version }}.el7.x86_64.rpm'
-    state: present
-
-
 - name: "Install ScaleIO MDM set to TieBreaker"
   yum:
     name: '/tmp/EMC-ScaleIO-mdm-{{ vxflex_version }}.el7.x86_64.rpm'
