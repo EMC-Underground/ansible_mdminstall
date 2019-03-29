@@ -40,6 +40,20 @@
     insertafter: '= '
     line: 'security.bypass_certificate_check=true'
 
+- name: "Change gateway http port to 8080"
+  lineinfile:
+    path: /opt/emc/scaleio/gateway/conf/catalina.properties
+    regexp: '^http.port'
+    insertafter: '= '
+    line: "http.port={{ vxflex_gateway_http_port }}"
+
+- name: "Change gateway https port to 8080"
+  lineinfile:
+    path: /opt/emc/scaleio/gateway/conf/catalina.properties
+    regexp: '^ssl.port'
+    insertafter: '= '
+    line: "ssl.port={{ vxflex_gateway_https_port }}"
+
 - name: "Restart Gateway Service"
   systemd:
     name: scaleio-gateway
